@@ -44,9 +44,19 @@
 
 <body onload="updateTime()">
     <script>
-        function modify_title(){
-            document.getElementById("title").innerText = "Success!"
-            console.log("Modified!");
+        var x = 0;
+        function modify_background(){
+            if (!x){
+                console.log("Moon!");
+                console.log((4 % 2));
+                document.body.style.backgroundImage = 'url("https://apod.nasa.gov/apod/image/2108/Luna-Tycho-Clavius-high.jpg")';
+                x++;
+            }
+            else {
+                console.log("Grapefruit!");
+                document.body.style.backgroundImage = 'url("grapefruit2.jpeg")';
+                x--;
+            }
         }
         function processForm(e){
             if (e.preventDefault) e.preventDefault;
@@ -93,7 +103,7 @@
     </form>
     <br id = "last">
     <div>
-        <button onclick="modify_title()">Modify Title</button>
+        <button onclick="modify_background()">Change Background</button>
     </div>
     <div id="footer">
         andrushamackenzie@yahoo.ca
