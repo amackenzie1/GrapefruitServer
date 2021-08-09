@@ -1,0 +1,103 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background-image: url("grapefruit2.jpeg");
+            background-size: cover;
+            color:rgb(255, 255, 255); 
+        }
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        div {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        button {
+            text-align: center;
+        }
+        img {
+            text-align: center;
+        }
+        #footer {
+            position: fixed;
+            padding: 10px 10px 0px 10px;
+            bottom: 25;
+            width: 100%;
+            height: 40px;
+        }
+    </style>
+    <title>
+        Andrew's Webpage
+    </title>
+</head>
+
+<body onload="updateTime()">
+    <script>
+        function modify_title(){
+            document.getElementById("title").innerText = "Success!"
+            console.log("Modified!");
+        }
+        function processForm(e){
+            if (e.preventDefault) e.preventDefault;
+            var results = eval(e.arithmetic.value);
+            console.log(results);
+            createNewElement(results);
+            return false;
+        }
+        function createNewElement(text){
+            try {
+                document.body.querySelectorAll(".results").forEach((e) => e.remove());
+                var newElement = document.createElement("div");
+                newElement.innerText = text;
+                newElement.className = "results";
+                const lastDiv = document.getElementById("last");
+                document.body.insertBefore(newElement, lastDiv);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        function displayTime(){
+            var date = new Date();
+            time = date.toString();
+            document.getElementById("time").innerText = time;
+        }
+        function updateTime(){
+            nIntervId = setInterval(displayTime, 1000);
+        }
+    </script>
+
+    <h1 id="title">Hello World!</h1>
+    <p>By %s</p>
+    <div id='time'></div>
+    <br>
+    <form method="get" action="">
+        Enter your name:
+        <input type="text" name="name" />
+        <input type="submit" value="Submit" />
+    </form>
+    <form id='myform' onsubmit="return processForm(this);">
+        Enter JS code:
+        <input type='text' name="arithmetic"/>
+        <button color="red" type="submit" >Go</button>
+    </form>
+    <br id = "last">
+    <div>
+        <button onclick="modify_title()">Modify Title</button>
+    </div>
+    <div id="footer">
+        andrushamackenzie@yahoo.ca
+    </div>
+
+</body>
+</html>
